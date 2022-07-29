@@ -3,37 +3,46 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-  // const [enteredTitle, setEnteredTitle] = useState('');
-  // const [enteredAmount, setEnteredAmount] = useState('');
-  // const [enteredDate, setEnteredDate] = useState('');
-  const [userInput, setUserInput] = useState({
-    enteredTitle: '',
-    enteredAmount: '',
-    enteredDate: '',
-  });
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: '',
+  //   enteredAmount: '',
+  //   enteredDate: '',
+  // });
   const titleEventHandler = (e) => {
-    // setEnteredTitle(e.target.value);
-    setUserInput({
-      ...userInput,
-      enteredTitle: e.target.value,
-    });
+    setEnteredTitle(e.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: e.target.value,
+    // });
   };
   const amountEventHandler = (e) => {
-    // setEnteredAmount(e.target.value);
-    setUserInput({
-      ...userInput,
-      enteredAmount: e.target.value,
-    });
+    setEnteredAmount(e.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: e.target.value,
+    // });
   };
   const dateEventHandler = (e) => {
-    // setEnteredDate(e.target.value);
-    setUserInput({
-      ...userInput,
-      enteredDate: e.target.value,
-    });
+    setEnteredDate(e.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: e.target.value,
+    // });
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(expenseData);
   };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
